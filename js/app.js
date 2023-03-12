@@ -313,7 +313,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 infinite: false,
                 arrows: false,
                 swipe: true,
-                focusOnSelect: true
+                focusOnSelect: true,
+                variableWidth: true
             });
         }
         const sections = document.querySelectorAll('section'),
@@ -322,20 +323,42 @@ document.addEventListener('DOMContentLoaded', function () {
         const cb = (entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting && entry.intersectionRatio >= 0.8) {
-                    let activeId = entry.target.id
-                    const activeLink = document.querySelector(`.toolbar__item[href="#${activeId}"]`)
+                    let activeId = null;
+                    if(entry.target.classList.contains('toolbar')) {
+                        activeId = 'content'
+                    }else{
+                        activeId = entry.target.id
+                    }
 
+                    const activeLink = document.querySelectorAll(`.toolbar__item[href="#${activeId}"]`)
+                    // if(activeLink) {
+                    //     links.forEach(el => el.classList.remove('active'))
+                    //     let line = document.querySelector('.toolbar__active-line'),
+                    //         left = activeLink.offsetLeft
+                    //     console.log(activeLink.offsetWidth)
+                    //     line.style.left = left + 'px'
+                    //     line.style.width = activeLink.offsetWidth + 'px'
+                    // }
+                    //
+                    // if(activeLink) {
+                    //     activeLink.classList.add('active')
+                    // }
                     if(activeLink) {
                         links.forEach(el => el.classList.remove('active'))
-                        let line = document.querySelector('.toolbar__active-line'),
-                            left = activeLink.offsetLeft
-                        console.log(activeLink.offsetWidth)
-                        line.style.left = left + 'px'
-                        line.style.width = activeLink.offsetWidth + 'px'
+                        if(window.innerWidth > 768) {
+                            let line = document.querySelector('.toolbar__active-line'),
+                                left = activeLink[0].offsetLeft
+                            console.log(activeLink.offsetWidth)
+                            line.style.left = left + 'px'
+                            line.style.width = activeLink[0].offsetWidth + 'px'
+                        }else{
+                            const index = $(activeLink[1]).attr("data-slick-index");
+                            $(".toolbar.mobile .toolbar-box").slick("slickGoTo", index);
+                        }
                     }
 
                     if(activeLink) {
-                        activeLink.classList.add('active')
+                        activeLink.forEach(el => el.classList.add('active'))
                     }
                 }
             })
@@ -514,6 +537,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (document.querySelector('.mask-phone') !== null) {
         $('.mask-phone').mask("+7 (999) 999-99-99")
+    }
+
+    if(document.querySelector('.instruction-mobile')) {
+        let items = document.querySelectorAll('.instruction__item')
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                let content = item.querySelector('.instruction__item-answer');
+
+                if(content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    item.classList.remove('active');
+                }else{
+                    document.querySelectorAll('.instruction__item-answer').forEach(el => el.style.maxHeight = null);
+                    document.querySelectorAll('.instruction__item').forEach(el => el.classList.remove('active'));
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    item.classList.add('active');
+                }
+
+            })
+        })
     }
 
 })
