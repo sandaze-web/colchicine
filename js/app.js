@@ -166,7 +166,9 @@ headerFixed();
 //плавные якоря
 $('a[href^="#"]').on("click", function (e) {
     let anchor = $(this);
-    let offset = document.documentElement.clientHeight * 220 / 929
+    let offsetAnchor = 220
+    if(window.innerWidth <= 768) offsetAnchor = 110
+    let offset = document.documentElement.clientHeight * offsetAnchor / 929
     $('html, body').stop().animate({
         scrollTop: $(anchor.attr("href")).offset().top - offset
     }, 700);
@@ -363,7 +365,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
         }
-        const sectionObserver = new IntersectionObserver(cb, { threshold: [ 0.1, 0.5, 0.8], rootMargin: `-80px 0px -80px 0px` })
+
+        let rootMargin = -80
+        if(window.innerWidth <= 768) rootMargin = -40
+        const sectionObserver = new IntersectionObserver(cb, { threshold: [ 0.1, 0.5, 0.8], rootMargin: `${rootMargin}px 0px ${rootMargin}px 0px` })
 
         sections.forEach(section => {sectionObserver.observe(section)})
     }
