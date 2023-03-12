@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ========== MAIN CSS ========== -->
-  <link rel="stylesheet" href="css/style.min.css?_v=20230309174121">
+  <link rel="stylesheet" href="./static/awesome/all.css?_v=20230312214840">
+  <link rel="stylesheet" href="css/style.min.css?_v=20230312214840">
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css?_v=20230309174121" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css?_v=20230312214840" />
 
   <!-- ========== FAVICONS ========== -->
   <link rel="apple-touch-icon" sizes="76x76" href="./static/favicon/apple-touch-icon.png">
@@ -22,7 +23,9 @@
 <body>
 
 <main class="main">
-    <div class="header__container"  >
+    <div class="blackout"></div>
+
+<div class="header__container">
     <div class="header-top">
         <p class="header__region">Москва и Московская область</p>
         <!-- /.header-region -->
@@ -59,13 +62,19 @@
             <div class="header-box">
                 <div class="header-phoneBx">
                     <a href="tel: +7 (981) 459-54-75" class="header__phone">+7 (981) 459-54-75</a>
+                    <a href="tel: +7 (981) 459-54-75" class="header__mobile-phone">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.3332 14.1V16.6C18.3341 16.8321 18.2866 17.0618 18.1936 17.2745C18.1006 17.4871 17.9643 17.678 17.7933 17.8349C17.6222 17.9918 17.4203 18.1112 17.2005 18.1856C16.9806 18.2599 16.7477 18.2876 16.5165 18.2667C13.9522 17.988 11.489 17.1118 9.32486 15.7083C7.31139 14.4289 5.60431 12.7218 4.32486 10.7083C2.91651 8.53433 2.04007 6.05916 1.76653 3.48333C1.7457 3.25288 1.77309 3.02063 1.84695 2.80135C1.9208 2.58207 2.03951 2.38057 2.1955 2.20968C2.3515 2.03879 2.54137 1.90225 2.75302 1.80876C2.96468 1.71527 3.19348 1.66688 3.42486 1.66666H5.92486C6.32928 1.66268 6.72136 1.80589 7.028 2.0696C7.33464 2.33332 7.53493 2.69953 7.59153 3.09999C7.69705 3.90005 7.89274 4.6856 8.17486 5.44166C8.28698 5.73993 8.31125 6.06409 8.24478 6.37573C8.17832 6.68737 8.02392 6.97342 7.79986 7.19999L6.74153 8.25833C7.92783 10.3446 9.65524 12.072 11.7415 13.2583L12.7999 12.2C13.0264 11.9759 13.3125 11.8215 13.6241 11.7551C13.9358 11.6886 14.2599 11.7129 14.5582 11.825C15.3143 12.1071 16.0998 12.3028 16.8999 12.4083C17.3047 12.4654 17.6744 12.6693 17.9386 12.9812C18.2029 13.2931 18.3433 13.6913 18.3332 14.1Z"
+                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                     <!-- /.header__phone -->
                     <p class="header-phoneBx__desc">Звоните по номеру</p>
                     <!-- /.header-phoneBx__desc -->
                 </div>
                 <!-- /.header-phoneBx -->
                 <div class="header-buttonBx">
-                    <button class="header__button">Закажите звонок</button>
+                    <button class="header__button call-button">Закажите звонок</button>
                     <!-- /.header__button -->
                 </div>
                 <!-- /.header-buttonBx -->
@@ -75,9 +84,29 @@
     <!-- /.header-inner -->
 </header>
 <!-- /.header -->
-    <span class="observer" data-observ></span>
 
-    <section class="toolbar">
+<!--MODAL-->
+<div class="modal">
+    <div class="modal-box">
+        <p class="modal__title">Заказать обратный звонок</p>
+        <!-- /.modal__title -->
+        <p class="modal__subtitle">Оставьте ваш номер телефона и мы свяжемся в течение ближайшего времени</p>
+        <!-- /.modal__subtitle -->
+        <form class="modal-form">
+            <div class="modal-inputBx"><label for="name">Как к вам обращаться</label><input id="name" type="text" placeholder="Ваше имя"></div>
+            <div class="modal-inputBx"><label for="phone">Позвоним на этот номер</label><input class="mask-phone" id="phone" type="text" placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"></div>
+            <button class="modal__button" type="submit">Отправить заявку</button>
+        </form>
+        <svg class="modal__cross close-on-blackout" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18" stroke="#A7A8AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 6L18 18" stroke="#A7A8AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <!-- /.modal-box -->
+</div>
+<!-- /.modal -->
+    <span class="observer" data-observ></span>
+    <section class="toolbar desktop">
         <div class="toolbar__container">
             <div class="toolbar-box">
                 <a href="#content" class="toolbar__item">Основное</a>
@@ -111,6 +140,22 @@
                         <!-- /.content-slider__item -->
                     </div>
                     <!-- /.content-slider -->
+                    <section class="toolbar mobile">
+                        <div class="toolbar__container">
+                            <div class="toolbar-box">
+                                <a href="#content" class="toolbar__item active">Основное</a>
+                                <a href="#release" class="toolbar__item">Форма выпуска</a>
+                                <a href="#description" class="toolbar__item">Описание</a>
+                                <a href="#instruction" class="toolbar__item">Инструкция</a>
+                                <a href="#scheme" class="toolbar__item">Схема заказа</a>
+                                <a href="#feedback" class="toolbar__item">Отзывы</a>
+                            </div>
+                                <span class="toolbar__active-line"></span>
+                                <span class="toolbar__line"></span>
+                            <!-- /.toolbar-box -->
+                        </div>
+                        <!-- /.toolbar__container -->
+                    </section>
                     <div class="content-slider-nav">
                         <div class="content-slider-nav__item"><picture><source srcset="./images/content/1.webp" type="image/webp"><img src="./images/content/1.png" alt=""></picture></div>
                         <!-- /.content-slider__item -->
@@ -158,6 +203,22 @@
                         <!-- /.content-tags__item -->
                     </div>
                     <!-- /.content-tags -->
+                    <div class="content-offer mobile">
+                        <div class="content-priceBx">
+                            <div class="content-priceBx__old">2 970</div>
+                            <div class="content-priceBx__sale">-25%</div>
+                            <div class="content-priceBx__new">2 202 ₽</div>
+                        </div>
+                        <p class="content__counter">В наличии <span>245</span> шт.</p>
+                        <!-- /.content-priceBx -->
+                    </div>
+                    <div class="content-buttonBx mobile">
+                        <!-- /.content__counter -->
+                        <button class="content__button call-button">Купить</button>
+                        <!-- /.content__button -->
+                    </div>
+                    <!-- /.content-buttonBx -->
+                    <!-- /.content-offer -->
                     <div class="content-desc">
                         <div class="content-recipe">
                             <div class="content-recipe__item">
@@ -197,7 +258,7 @@
                             <div class="content-buttonBx">
                                 <p class="content__counter">В наличии <span>245</span> шт.</p>
                                 <!-- /.content__counter -->
-                                <button class="content__button">Купить</button>
+                                <button class="content__button call-button">Купить</button>
                                 <!-- /.content__button -->
                             </div>
                             <!-- /.content-buttonBx -->
@@ -236,7 +297,16 @@
                 <div class="release-slider">
                     <div class="release__item">
                         <div class="release__itemBx">
-                            <div class="release__item-imgBx"><picture><source srcset="./images/release/1.webp" type="image/webp"><img src="./images/release/1.png" alt=""></picture></div>
+                            <div class="release__item-imgBx">
+                                <picture><source srcset="./images/release/1.webp" type="image/webp"><img src="./images/release/1.png" alt=""></picture>
+                                <div class="release-priceBx mobile">
+                                    <p class="release-priceBx__price">2 202 ₽</p>
+                                    <!-- /.release-priceBx__price -->
+                                    <button class="release-priceBx__button call-button">Купить</button>
+                                    <!-- /.release-priceBx__button -->
+                                </div>
+                                <!-- /.release-priceBx -->
+                            </div>
                             <!-- /.release__item-imgBx -->
                             <div class="release__item-titleBx">
                                 <h4>Аллопуринол, 300 мг, таблетки, 30 шт.</h4>
@@ -244,6 +314,7 @@
                                     очаг воспаления и угнетением фагоцитоза микрокристаллов солей мочевой кислоты.</p>
                             </div>
                             <!-- /.release__item-titleBx -->
+
                         </div>
                         <!-- /.release__itemBx -->
                         <div class="release-offer">
@@ -274,10 +345,10 @@
                                 </div>
                             </div>
                             <!-- /.release-tags -->
-                            <div class="release-priceBx">
+                            <div class="release-priceBx desktop">
                                 <p class="release-priceBx__price">2 202 ₽</p>
                                 <!-- /.release-priceBx__price -->
-                                <button class="release-priceBx__button">Купить</button>
+                                <button class="release-priceBx__button call-button">Купить</button>
                                 <!-- /.release-priceBx__button -->
                             </div>
                             <!-- /.release-priceBx -->
@@ -287,7 +358,16 @@
                     <!-- /.release__item -->
                     <div class="release__item">
                         <div class="release__itemBx">
-                            <div class="release__item-imgBx"><picture><source srcset="./images/release/1.webp" type="image/webp"><img src="./images/release/1.png" alt=""></picture></div>
+                            <div class="release__item-imgBx">
+                                <picture><source srcset="./images/release/1.webp" type="image/webp"><img src="./images/release/1.png" alt=""></picture>
+                                <div class="release-priceBx mobile">
+                                    <p class="release-priceBx__price">2 202 ₽</p>
+                                    <!-- /.release-priceBx__price -->
+                                    <button class="release-priceBx__button call-button">Купить</button>
+                                    <!-- /.release-priceBx__button -->
+                                </div>
+                                <!-- /.release-priceBx -->
+                            </div>
                             <!-- /.release__item-imgBx -->
                             <div class="release__item-titleBx">
                                 <h4>Аллопуринол, 300 мг, таблетки, 30 шт.</h4>
@@ -295,6 +375,7 @@
                                     очаг воспаления и угнетением фагоцитоза микрокристаллов солей мочевой кислоты.</p>
                             </div>
                             <!-- /.release__item-titleBx -->
+
                         </div>
                         <!-- /.release__itemBx -->
                         <div class="release-offer">
@@ -325,10 +406,10 @@
                                 </div>
                             </div>
                             <!-- /.release-tags -->
-                            <div class="release-priceBx">
+                            <div class="release-priceBx desktop">
                                 <p class="release-priceBx__price">2 202 ₽</p>
                                 <!-- /.release-priceBx__price -->
-                                <button class="release-priceBx__button">Купить</button>
+                                <button class="release-priceBx__button call-button">Купить</button>
                                 <!-- /.release-priceBx__button -->
                             </div>
                             <!-- /.release-priceBx -->
@@ -338,7 +419,16 @@
                     <!-- /.release__item -->
                     <div class="release__item">
                         <div class="release__itemBx">
-                            <div class="release__item-imgBx"><picture><source srcset="./images/release/1.webp" type="image/webp"><img src="./images/release/1.png" alt=""></picture></div>
+                            <div class="release__item-imgBx">
+                                <picture><source srcset="./images/release/1.webp" type="image/webp"><img src="./images/release/1.png" alt=""></picture>
+                                <div class="release-priceBx mobile">
+                                    <p class="release-priceBx__price">2 202 ₽</p>
+                                    <!-- /.release-priceBx__price -->
+                                    <button class="release-priceBx__button call-button">Купить</button>
+                                    <!-- /.release-priceBx__button -->
+                                </div>
+                                <!-- /.release-priceBx -->
+                            </div>
                             <!-- /.release__item-imgBx -->
                             <div class="release__item-titleBx">
                                 <h4>Аллопуринол, 300 мг, таблетки, 30 шт.</h4>
@@ -346,6 +436,7 @@
                                     очаг воспаления и угнетением фагоцитоза микрокристаллов солей мочевой кислоты.</p>
                             </div>
                             <!-- /.release__item-titleBx -->
+
                         </div>
                         <!-- /.release__itemBx -->
                         <div class="release-offer">
@@ -376,10 +467,10 @@
                                 </div>
                             </div>
                             <!-- /.release-tags -->
-                            <div class="release-priceBx">
+                            <div class="release-priceBx desktop">
                                 <p class="release-priceBx__price">2 202 ₽</p>
                                 <!-- /.release-priceBx__price -->
-                                <button class="release-priceBx__button">Купить</button>
+                                <button class="release-priceBx__button call-button">Купить</button>
                                 <!-- /.release-priceBx__button -->
                             </div>
                             <!-- /.release-priceBx -->
@@ -395,6 +486,86 @@
         <!-- /.release__container -->
     </section>
     <!-- /.release -->
+
+    <section class="forms" id="release">
+        <div class="forms__container">
+            <h2 class="forms__title title">Форма выпуска</h2>
+            <!-- /.forms__title title -->
+            <div class="forms-box">
+                <div class="forms__item">
+                    <div class="forms__item-box">
+                        <div class="forms__item-imgBx"><picture><source srcset="./images/release/main.webp" type="image/webp"><img src="./images/release/main.png" alt=""></picture></div>
+                        <!-- /.forms__item-imgBx -->
+                        <p class="forms__item-title">Аллопуринол, 300 мг, таблетки, 30 шт.</p>
+                        <!-- /.forms__item-title -->
+                    </div>
+                    <!-- /.forms__item-box -->
+                    <div class="forms__item-priceBx">
+                        <p class="forms__item-price">2 371 ₽</p>
+                        <!-- /.forms__item-price -->
+                        <button class="forms__item-button call-button">Купить</button>
+                        <!-- /.forms__item-button -->
+                    </div>
+                    <!-- /.forms__item-priceBx -->
+                </div>
+                <!-- /.forms__item -->
+                <div class="forms__item">
+                    <div class="forms__item-box">
+                        <div class="forms__item-imgBx"><picture><source srcset="./images/release/main.webp" type="image/webp"><img src="./images/release/main.png" alt=""></picture></div>
+                        <!-- /.forms__item-imgBx -->
+                        <p class="forms__item-title">Аллопуринол, 300 мг, таблетки, 30 шт.</p>
+                        <!-- /.forms__item-title -->
+                    </div>
+                    <!-- /.forms__item-box -->
+                    <div class="forms__item-priceBx">
+                        <p class="forms__item-price">2 371 ₽</p>
+                        <!-- /.forms__item-price -->
+                        <button class="forms__item-button call-button">Купить</button>
+                        <!-- /.forms__item-button -->
+                    </div>
+                    <!-- /.forms__item-priceBx -->
+                </div>
+                <!-- /.forms__item -->
+                <div class="forms__item">
+                    <div class="forms__item-box">
+                        <div class="forms__item-imgBx"><picture><source srcset="./images/release/main.webp" type="image/webp"><img src="./images/release/main.png" alt=""></picture></div>
+                        <!-- /.forms__item-imgBx -->
+                        <p class="forms__item-title">Аллопуринол, 300 мг, таблетки, 30 шт.</p>
+                        <!-- /.forms__item-title -->
+                    </div>
+                    <!-- /.forms__item-box -->
+                    <div class="forms__item-priceBx">
+                        <p class="forms__item-price">2 371 ₽</p>
+                        <!-- /.forms__item-price -->
+                        <button class="forms__item-button call-button">Купить</button>
+                        <!-- /.forms__item-button -->
+                    </div>
+                    <!-- /.forms__item-priceBx -->
+                </div>
+                <!-- /.forms__item -->
+                <div class="forms__item">
+                    <div class="forms__item-box">
+                        <div class="forms__item-imgBx"><picture><source srcset="./images/release/main.webp" type="image/webp"><img src="./images/release/main.png" alt=""></picture></div>
+                        <!-- /.forms__item-imgBx -->
+                        <p class="forms__item-title">Аллопуринол, 300 мг, таблетки, 30 шт.</p>
+                        <!-- /.forms__item-title -->
+                    </div>
+                    <!-- /.forms__item-box -->
+                    <div class="forms__item-priceBx">
+                        <p class="forms__item-price">2 371 ₽</p>
+                        <!-- /.forms__item-price -->
+                        <button class="forms__item-button call-button">Купить</button>
+                        <!-- /.forms__item-button -->
+                    </div>
+                    <!-- /.forms__item-priceBx -->
+                </div>
+                <!-- /.forms__item -->
+            </div>
+            <!-- /.forms-box -->
+        </div>
+        <!-- /.forms__container -->
+    </section>
+    <!-- /.forms -->
 
     <section class="description" id="description">
         <div class="description__container">
@@ -418,7 +589,7 @@
             <div class="instruction-inner">
                 <div class="instruction-box">
                     <div class="instruction-titleBx">
-                        <div class="instruction__crumb prev">Назначение</div>
+                        <div class="instruction__crumb current">Назначение</div>
                         <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.4376 0.186826L5.6501 4.37111C5.7001 4.42092 5.73551 4.47489 5.75635 4.533C5.77718 4.59112 5.7876 4.65338 5.7876 4.7198C5.7876 4.78622 5.77718 4.84848 5.75635 4.9066C5.73551 4.96471 5.7001 5.01868 5.6501 5.06849L1.4376 9.26523C1.32093 9.38146 1.1751 9.43957 1.0001 9.43957C0.825097 9.43957 0.675097 9.37731 0.550097 9.25278C0.425097 9.12824 0.362597 8.98296 0.362597 8.81691C0.362597 8.65087 0.425097 8.50558 0.550097 8.38105L4.2251 4.7198L0.550098 1.05855C0.433431 0.942321 0.375098 0.79911 0.375098 0.628915C0.375098 0.458722 0.437598 0.311358 0.562598 0.186826C0.687598 0.0622936 0.833431 2.72251e-05 1.0001 2.72396e-05C1.16676 2.72541e-05 1.3126 0.0622936 1.4376 0.186826Z"
                                   fill="#808080"/>
@@ -599,6 +770,16 @@
                             <!-- /.instruction__item -->
                         </div>
                         <!-- /.instruction-slider -->
+                        <div class="instruction-arrows">
+                            <div class="instruction-arrowsBx ">
+                                <div class="instruction__arrow left instruction__crumb prev">Показания к применению</div>
+                                <!-- /.instruction__arrow -->
+                            </div>
+                            <div class="instruction-arrowsBx">
+                                <div class="instruction__crumb next instruction__arrow right">Состав</div>
+                            </div>
+                        </div>
+                        <!-- /.instruction-arrows -->
                     </div>
                     <!-- /.instruction-content -->
                 </div>
@@ -700,7 +881,7 @@
                         <!-- /.instruction-nav-slider__item -->
                     </div>
                     <!-- /.instruction-nav-slider -->
-                    <button class="instruction-nav__button">Купить</button>
+                    <button class="instruction-nav__button call-button">Купить</button>
                     <!-- /.instruction-nav__button -->
                 </div>
                 <!-- /.instruction-nav -->
@@ -1021,6 +1202,9 @@
                 <!-- /.delivery__item -->
             </div>
             <!-- /.delivery-box -->
+            <div class="delivery-buttonBx">
+                <button class="delivery__button">Заказать доставку</button>
+            </div>
         </div>
         <!-- /.delivery__container -->
     </section>
@@ -1305,7 +1489,7 @@
                         </svg>
                     </div>
                     <!-- /.tags__item-svgBx -->
-                    <h3 class="tags__item-title">Нет предоплаты при заказе товара</h3>
+                    <h3 class="tags__item-title">Нет предоплаты при заказе лекарственных стредств</h3>
                     <!-- /.tags__item-title -->
                 </div>
                 <!-- /.tags__item -->
@@ -1513,14 +1697,14 @@
   </div>
 </footer>
 </main>
-<script defer src="static/plugins/jquery.min.js?_v=20230309174121"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js?_v=20230309174121"></script>
-<script defer src="static/plugins/jquery.maskedinput.min.js?_v=20230309174121"></script>
-<script defer src="static/plugins/jquery.spincrement.min.js?_v=20230309174121"></script>
-<script defer src="static/plugins/slick.min.js?_v=20230309174121"></script>
+<script defer src="static/plugins/jquery.min.js?_v=20230312214840"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js?_v=20230312214840"></script>
+<script defer src="static/plugins/jquery.maskedinput.min.js?_v=20230312214840"></script>
+<script defer src="static/plugins/jquery.spincrement.min.js?_v=20230312214840"></script>
+<script defer src="static/plugins/slick.min.js?_v=20230312214840"></script>
 
 
-<script defer src="js/app.js?_v=20230309174121"></script>
+<script defer src="js/app.js?_v=20230312214840"></script>
 
 </body>
 </html> 

@@ -102,7 +102,7 @@ function setHash(hash) {
 // Функция для фиксированной шапки при скролле =================================================================================================================
 function headerFixed() {
   const headerStickyObserver = new IntersectionObserver(([entry]) => {
-    document.querySelector('.toolbar').classList.toggle('sticky', !entry.isIntersecting)
+    document.querySelectorAll('.toolbar').forEach(el => el.classList.toggle('sticky', !entry.isIntersecting))
   })
 
   if (firstScreen) {
@@ -181,13 +181,28 @@ document.addEventListener('DOMContentLoaded', function () {
             dots: false,
             prevArrow: `#feedback-arrows__item-left`,
             nextArrow: `#feedback-arrows__item-right`,
+            responsive: [
+                {
+                    breakpoint: 769,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: true,
+                        arrows: false,
+                    }
+                },
+            ]
         });
 
         //обрезка текста отзывов
         let allFeedbackItems = document.querySelectorAll('.feedback__item-desc')
 
         allFeedbackItems.forEach(el => {
-            cutText(el, 462)
+            if(window.innerWidth > 769){
+                cutText(el, 462)
+            }else{
+                cutText(el, 380)
+            }
         })
 
         allFeedbackItems.forEach(el => {
@@ -199,21 +214,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if(document.querySelector('#licenses-double-slider') !== null) {
-        $('#licenses-double-slider').slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            dots: false,
-            prevArrow: `.licenses-double-left`,
-            nextArrow: `.licenses-double-right`,
-            touchMove: false,
-            swipe: false,
-            infinite: false,
-        });
+        let slideToShow = 4,
+            lengthSlider = $('#licenses-double-slider .licenses__item').length
+        if(window.innerWidth > 769) {
+            $('#licenses-double-slider').slick({
+                slidesToShow: slideToShow,
+                slidesToScroll: 1,
+                dots: false,
+                prevArrow: `.licenses-double-left`,
+                nextArrow: `.licenses-double-right`,
+                touchMove: false,
+                swipe: false,
+                infinite: false,
+                responsive: [
+                    {
+                        breakpoint: 769,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            dots: true,
+                            swipe: true,
+                            arrows: false,
+                        }
+                    },
+                ]
+            });
+            $('#licenses-double-slider').on('afterChange', function (event, slick, currentSlide) {
+                if(currentSlide + slideToShow === lengthSlider){
+                    document.querySelector('.licenses-double-right').classList.add('hide')
+                }else{
+                    document.querySelector('.licenses-double-right').classList.remove('hide')
+                }
+            })
+        }
         Fancybox.bind('[data-fancybox="gallery"]', {  });
     }
     if(document.querySelector('#licenses-three-slider') !== null) {
+        let slideToShow = 3,
+            lengthSlider = $('#licenses-three-slider .licenses__item').length
         $('#licenses-three-slider').slick({
-            slidesToShow: 3,
+            slidesToShow: slideToShow,
             slidesToScroll: 1,
             dots: false,
             prevArrow: `.licenses-three-left`,
@@ -221,7 +261,26 @@ document.addEventListener('DOMContentLoaded', function () {
             touchMove: false,
             swipe: false,
             infinite: false,
+            responsive: [
+                {
+                    breakpoint: 769,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        dots: true,
+                        swipe: true,
+                        arrows: false,
+                    }
+                },
+            ]
         });
+        $('#licenses-three-slider').on('afterChange', function (event, slick, currentSlide) {
+            if(currentSlide + slideToShow === lengthSlider){
+                document.querySelector('.licenses-three-right').classList.add('hide')
+            }else{
+                document.querySelector('.licenses-three-right').classList.remove('hide')
+            }
+        })
         Fancybox.bind('[data-fancybox="gallery"]', {  });
     }
     if(document.querySelector('.release-inner') !== null) {
@@ -231,11 +290,32 @@ document.addEventListener('DOMContentLoaded', function () {
             dots: false,
             prevArrow: `#release-left`,
             nextArrow: `#release-right`,
-            infinite: false,
+            infinite: true,
+            responsive: [
+                {
+                    breakpoint: 769,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: true
+                    }
+                },
+            ]
         });
     }
 
     if(document.querySelector('.content') !== null) {
+        if(document.querySelector('.toolbar.mobile' ) !== null && window.innerWidth <= 769) {
+            $('.toolbar.mobile .toolbar-box').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                dots: false,
+                infinite: false,
+                arrows: false,
+                swipe: true,
+                focusOnSelect: true
+            });
+        }
         const sections = document.querySelectorAll('section'),
             links = document.querySelectorAll('.toolbar__item')
 
@@ -249,6 +329,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         links.forEach(el => el.classList.remove('active'))
                         let line = document.querySelector('.toolbar__active-line'),
                             left = activeLink.offsetLeft
+                        console.log(activeLink.offsetWidth)
                         line.style.left = left + 'px'
                         line.style.width = activeLink.offsetWidth + 'px'
                     }
@@ -294,7 +375,20 @@ document.addEventListener('DOMContentLoaded', function () {
             fade: true,
             asNavFor: ".content-slider-nav",
             swipe: false,
+
+            responsive: [
+                {
+                    breakpoint: 769,
+                    settings: {
+                        dots: true,
+                        swipe: true,
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                    }
+                },
+            ]
         });
+
         $('.content-slider-nav').slick({
             slidesToShow: 5,
             dots: false,
@@ -306,6 +400,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
     if(document.querySelector('.instruction-slider') !== null) {
+        let crumbCurrent = document.querySelector('.instruction__crumb.current'),
+            crumbNext = document.querySelectorAll('.instruction__crumb.next'),
+            prevButton =  document.querySelectorAll('.instruction__crumb.prev'),
+            allSlider = document.querySelectorAll('.instruction-slider .instruction__item')
         $('.instruction-slider').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -317,6 +415,41 @@ document.addEventListener('DOMContentLoaded', function () {
             nextArrow: `.instruction__crumb.next`,
             swipe: false,
         });
+
+        $('.instruction-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            let crumbCurrentText = allSlider[nextSlide].querySelector('.instruction__item-title').textContent,
+                previousText = null,
+                crumbNextText = null
+
+            if(nextSlide + 1 < allSlider.length) {
+                crumbNextText = allSlider[nextSlide + 1].querySelector('.instruction__item-title').textContent
+            }else{
+                crumbNext.forEach(el => {
+                    el.textContent = ''
+                    el.classList.add('hide')
+                })
+            }
+
+            if(nextSlide > 0) {
+                previousText = allSlider[nextSlide - 1].querySelector('.instruction__item-title').textContent
+            }else{
+                prevButton.forEach(el => {
+                    el.textContent = ''
+                    el.classList.add('hide')
+                })
+            }
+
+            if(crumbCurrentText) crumbCurrent.textContent = crumbCurrentText
+            if(crumbNextText) crumbNext.forEach(el => {
+                el.textContent = crumbNextText
+                el.classList.remove('hide')
+            })
+            if(previousText) prevButton.forEach(el => {
+                el.textContent = previousText
+                el.classList.remove('hide')
+            })
+
+        })
 
         $('.instruction-nav-slider').slick({
             slidesToShow: 13,
@@ -332,7 +465,66 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     }
+
+    if(document.querySelector('.forms') !== null) {
+        if(window.innerWidth <= 769) {
+            $('.forms-box').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                arrows: false,
+                infinite: true,
+            });
+        }
+    }
+    if(document.querySelector('.scheme') !== null) {
+        if(window.innerWidth <= 769) {
+            $('.scheme-box').slick({
+                slidesToShow: 1.5,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: false,
+                infinite: false,
+            });
+        }
+    }
+
+    //    ОТкрытие поп апа
+    if(document.querySelector('.call-button')) {
+        let buttons = document.querySelectorAll('.call-button'),
+            blackout = document.querySelector('.blackout'),
+            closeOnClickBlocks = document.querySelectorAll('.close-on-blackout')
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                toggleModal()
+            })
+        })
+
+        blackout.addEventListener('click', () => {
+            toggleModal()
+        })
+
+        closeOnClickBlocks.forEach(el => {
+            el.addEventListener('click', () => {
+                toggleModal()
+            })
+        })
+    }
+
+    if (document.querySelector('.mask-phone') !== null) {
+        $('.mask-phone').mask("+7 (999) 999-99-99")
+    }
+
 })
+
+let toggleModal = () => {
+    let modal = document.querySelector('.modal'),
+        blackout = document.querySelector('.blackout')
+
+    modal.classList.toggle('active');
+    blackout.classList.toggle('active')
+}
 
 let toggleBlackout = () => {
 
