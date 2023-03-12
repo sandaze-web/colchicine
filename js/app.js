@@ -352,7 +352,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         if(window.innerWidth > 768) {
                             let line = document.querySelector('.toolbar__active-line'),
                                 left = activeLink[0].offsetLeft
-                            console.log(activeLink.offsetWidth)
                             line.style.left = left + 'px'
                             line.style.width = activeLink[0].offsetWidth + 'px'
                         }else{
