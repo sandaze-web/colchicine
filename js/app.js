@@ -321,10 +321,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         const sections = document.querySelectorAll('section'),
             links = document.querySelectorAll('.toolbar__item')
+        let accessRatio = 0.8
 
+        if(window.innerWidth <= 768) accessRatio = 0.4
         const cb = (entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting && entry.intersectionRatio >= 0.8) {
+                if(entry.isIntersecting && entry.intersectionRatio >= accessRatio) {
                     let activeId = null;
                     if(entry.target.classList.contains('toolbar')) {
                         activeId = 'content'
