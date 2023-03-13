@@ -167,7 +167,7 @@ headerFixed();
 $('a[href^="#"]').on("click", function (e) {
     let anchor = $(this);
     let offsetAnchor = 220
-    if(window.innerWidth <= 768) offsetAnchor = 110
+    if(window.innerWidth <= 768) offsetAnchor = 10
     let offset = document.documentElement.clientHeight * offsetAnchor / 929
     $('html, body').stop().animate({
         scrollTop: $(anchor.attr("href")).offset().top - offset
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
             links = document.querySelectorAll('.toolbar__item')
         let accessRatio = 0.8
 
-        if(window.innerWidth <= 768) accessRatio = 0.3
+        if(window.innerWidth <= 768) accessRatio = 0.5
         const cb = (entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting && entry.intersectionRatio >= accessRatio) {
@@ -368,8 +368,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let rootMargin = -80,
             threshold = [ 0.1, 0.5, 0.8]
         if(window.innerWidth <= 768) {
-            rootMargin = 0
-            threshold = [ 0.1, 1]
+            rootMargin = -50
+            threshold = [ 0.1, 0.5, 1]
         }
         const sectionObserver = new IntersectionObserver(cb, { threshold: threshold, rootMargin: `${rootMargin}px 0px ${rootMargin}px 0px` })
 
