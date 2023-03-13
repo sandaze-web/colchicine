@@ -1,6 +1,6 @@
 const html = document.documentElement
 const body = document.body
-const pageWrapper = document.querySelector('.page')
+const pageWrapper = document.querySelector('.main')
 const header = document.querySelector('.toolbar')
 const firstScreen = document.querySelector('[data-observ]')
 const burgerButton = document.querySelector('.icon-menu')
@@ -16,7 +16,6 @@ const lockPaddingElements = document.querySelectorAll('[data-lp]')
 * В html таким элементам нужно дать атрибут [data-lp] 
 */
 const toggleBodyLock = (isLock) => {
-  FLS(`Попап ${isLock ? 'открыт' : 'закрыт'}`)
   const lockPaddingValue = window.innerWidth - pageWrapper.offsetWidth
 
   setTimeout(() => {
@@ -347,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // }
                     if(activeLink) {
                         links.forEach(el => el.classList.remove('active'))
-                        if(window.innerWidth > 768) {
+                        if(window.innerWidth > 768 && activeLink[0]) {
                             let line = document.querySelector('.toolbar__active-line'),
                                 left = activeLink[0].offsetLeft
                             line.style.left = left + 'px'
@@ -568,13 +567,55 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
+
+    if(document.querySelector('.header-burgerBx')) {
+        let burger = document.querySelector('.header-burgerBx'),
+            navMobile = document.querySelector('.header-nav-mobile'),
+            headerBlackout = document.querySelector('.header-blackout')
+
+        burger.addEventListener('click', () => {
+            toggleHeaderBlackout()
+            burger.classList.toggle('active')
+            navMobile.classList.toggle('active')
+            toggleBodyLock(burger.classList.contains('active'))
+        })
+        headerBlackout.addEventListener('click', () => {
+            toggleHeaderBlackout()
+            burger.classList.toggle('active')
+            navMobile.classList.toggle('active')
+            toggleBodyLock(burger.classList.contains('active'))
+        })
+    }
+
+    if(document.querySelector('.feedback__button')) {
+        let feedbackButton = document.querySelector('.feedback__button'),
+            modal = document.querySelector('.modal#feedback-modal'),
+            blackout = document.querySelector('.blackout')
+
+        feedbackButton.addEventListener('click', () => {
+            modal.classList.toggle('active')
+            blackout.classList.toggle('active')
+            toggleBodyLock(modal.classList.contains('active'))
+        })
+    }
 })
 
-let toggleModal = () => {
-    let modal = document.querySelector('.modal'),
-        blackout = document.querySelector('.blackout')
+let toggleHeaderBlackout = () => {
+    let headerBlackout = document.querySelector('.header-blackout')
+    headerBlackout.classList.toggle('active')
+}
 
-    modal.classList.toggle('active');
+let toggleModal = () => {
+    let modal = document.querySelector('.modal#request-modal'),
+        blackout = document.querySelector('.blackout'),
+        isLock = false;
+
+    if(document.querySelector('.modal#feedback-modal').classList.contains('active')) {
+        document.querySelector('.modal#feedback-modal').classList.remove('active')
+    }else{
+        modal.classList.toggle('active');
+    }
+    toggleBodyLock(modal.classList.contains('active'))
     blackout.classList.toggle('active')
 }
 

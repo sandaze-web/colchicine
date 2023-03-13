@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ========== MAIN CSS ========== -->
-  <link rel="stylesheet" href="./static/awesome/all.css?_v=20230313113038">
-  <link rel="stylesheet" href="css/style.min.css?_v=20230313113038">
+  <link rel="stylesheet" href="./static/awesome/all.css?_v=20230313154957">
+  <link rel="stylesheet" href="css/style.min.css?_v=20230313154957">
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css?_v=20230313113038" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css?_v=20230313154957" />
 
   <!-- ========== FAVICONS ========== -->
   <link rel="apple-touch-icon" sizes="76x76" href="./static/favicon/apple-touch-icon.png">
@@ -24,22 +24,87 @@
 
 <main class="main">
     <div class="blackout"></div>
+<div class="blackout header-blackout"></div>
 
-<div class="header__container">
-    <div class="header-top">
-        <p class="header__region">Москва и Московская область</p>
-        <!-- /.header-region -->
-        <ul class="header-pages">
-            <li class="header-pages__item"><a href="">О компании</a></li>
-            <li class="header-pages__item"><a href="">Лицензии</a></li>
-        </ul>
-        <!-- /.header-pages -->
+<!--MODAL-->
+<div class="modal" id="request-modal">
+    <div class="modal-box">
+        <p class="modal__title">Заказать обратный звонок</p>
+        <!-- /.modal__title -->
+        <p class="modal__subtitle">Оставьте ваш номер телефона и мы свяжемся в течение ближайшего времени</p>
+        <!-- /.modal__subtitle -->
+        <form class="modal-form">
+            <div class="modal-inputBx"><label for="name">Как к вам обращаться</label><input id="name" type="text" placeholder="Ваше имя"></div>
+            <div class="modal-inputBx"><label for="phone">Позвоним на этот номер</label><input class="mask-phone" id="phone" type="text" placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"></div>
+            <button class="modal__button" type="submit">Отправить заявку</button>
+        </form>
+        <svg class="modal__cross close-on-blackout" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18" stroke="#A7A8AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 6L18 18" stroke="#A7A8AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
     </div>
-    <!-- /.header-top -->
+    <!-- /.modal-box -->
 </div>
-<!-- /.header__container -->
-<header class="header">
+<!-- /.modal -->
+<div class="modal" id="feedback-modal">
+    <div class="modal-box">
+        <p class="modal__title">Оставьте свой отзыв</p>
+        <!-- /.modal__title -->
+        <form class="modal-form">
+            <div class="modal-inputBx"><label for="name1">Как к вам обращаться</label><input id="name1" type="text" placeholder="Ваше имя"></div>
+            <div class="modal-inputBx">
+                <label for="text">Оставьте отзыв</label>
+                <textarea name="text" id="text" cols="30" rows="10"></textarea>
+            </div>
+            <button class="modal__button" type="submit">Отправить заявку</button>
+        </form>
+        <svg class="modal__cross close-on-blackout" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18" stroke="#A7A8AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 6L18 18" stroke="#A7A8AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <!-- /.modal-box -->
+</div>
+<!-- /.modal -->
 
+<div class="header-wrapper">
+    <div class="header__container">
+        <div class="header-top">
+            <p class="header__region">Москва и Московская область</p>
+            <!-- /.header-region -->
+            <ul class="header-pages">
+                <li class="header-pages__item"><a href="">О компании</a></li>
+                <li class="header-pages__item"><a href="">Лицензии</a></li>
+            </ul>
+            <!-- /.header-pages -->
+        </div>
+        <!-- /.header-top -->
+    </div>
+    <!-- /.header__container --></div>
+<header class="header">
+    <div class="header-nav-mobile">
+        <p class="header-nav-mobile__top">Москва и Московская область</p>
+        <div class="header-nav-mobile-pages"><a href="">О компании</a><a href="">Лицензии</a></div>
+        <nav class="header-nav mobile">
+            <ul>
+                <li class="header-nav__item"><a href="">Доставка</a></li>
+                <!-- /.header-nav__item -->
+                <li class="header-nav__item"><a href="">Отзывы</a></li>
+                <!-- /.header-nav__item -->
+                <li class="header-nav__item"><a href="">Контакты</a></li>
+                <!-- /.header-nav__item -->
+                <li class="header-nav__item"><a href="">FAQ</a></li>
+                <!-- /.header-nav__item -->
+            </ul>
+        </nav>
+        <!-- /.header-nav -->
+        <div class="header-buttonBx mobile">
+            <button class="header__button call-button second-button">Закажите звонок</button>
+            <!-- /.header__button -->
+        </div>
+        <!-- /.header-buttonBx -->
+    </div>
+    <!-- /.header-nav-mobile -->
     <div class="header-inner">
         <div class="header__container">
             <a href="#" class="header-logoBx">
@@ -73,8 +138,12 @@
                     <!-- /.header-phoneBx__desc -->
                 </div>
                 <!-- /.header-phoneBx -->
+                <div class="header-burgerBx">
+                    <span></span>
+                </div>
+                <!-- /.header-burgerBx -->
                 <div class="header-buttonBx">
-                    <button class="header__button call-button">Закажите звонок</button>
+                    <button class="header__button call-button second-button">Закажите звонок</button>
                     <!-- /.header__button -->
                 </div>
                 <!-- /.header-buttonBx -->
@@ -85,26 +154,6 @@
 </header>
 <!-- /.header -->
 
-<!--MODAL-->
-<div class="modal">
-    <div class="modal-box">
-        <p class="modal__title">Заказать обратный звонок</p>
-        <!-- /.modal__title -->
-        <p class="modal__subtitle">Оставьте ваш номер телефона и мы свяжемся в течение ближайшего времени</p>
-        <!-- /.modal__subtitle -->
-        <form class="modal-form">
-            <div class="modal-inputBx"><label for="name">Как к вам обращаться</label><input id="name" type="text" placeholder="Ваше имя"></div>
-            <div class="modal-inputBx"><label for="phone">Позвоним на этот номер</label><input class="mask-phone" id="phone" type="text" placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"></div>
-            <button class="modal__button" type="submit">Отправить заявку</button>
-        </form>
-        <svg class="modal__cross close-on-blackout" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 6L6 18" stroke="#A7A8AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6 6L18 18" stroke="#A7A8AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </div>
-    <!-- /.modal-box -->
-</div>
-<!-- /.modal -->
     <span class="observer" data-observ></span>
     <section class="toolbar desktop">
         <div class="toolbar__container">
@@ -176,29 +225,45 @@
                     <!-- /.content__title -->
                     <div class="content-tags">
                         <div class="content-tags__item">
-                            <div class="content-tags-svgBx">
-                                <svg width="12" height="11" viewBox="0 0 12 11" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5.18333 6.48045L3.92917 5.23098C3.82222 5.12444 3.68611 5.07116 3.52083 5.07116C3.35556 5.07116 3.21944 5.12444 3.1125 5.23098C3.00556 5.33753 2.95208 5.47313 2.95208 5.63779C2.95208 5.80245 3.00556 5.93805 3.1125 6.04459L4.775 7.70087C4.89167 7.8171 5.02778 7.87522 5.18333 7.87522C5.33889 7.87522 5.475 7.8171 5.59167 7.70087L8.8875 4.41737C8.99444 4.31083 9.04792 4.17522 9.04792 4.01056C9.04792 3.8459 8.99444 3.7103 8.8875 3.60376C8.78056 3.49721 8.64444 3.44394 8.47917 3.44394C8.31389 3.44394 8.17778 3.49721 8.07083 3.60376L5.18333 6.48045ZM1.91667 9.82207H10.0833V1.68596H1.91667V9.82207ZM1.91667 10.9844C1.59583 10.9844 1.32108 10.8707 1.09242 10.6432C0.864139 10.4154 0.75 10.1417 0.75 9.82207V1.68596C0.75 1.36633 0.864139 1.09261 1.09242 0.864795C1.32108 0.637372 1.59583 0.52366 1.91667 0.52366H4.36667C4.49306 0.17497 4.70461 -0.10592 5.00133 -0.319008C5.29767 -0.532097 5.63056 -0.638641 6 -0.638641C6.36944 -0.638641 6.70253 -0.532097 6.99925 -0.319008C7.29558 -0.10592 7.50694 0.17497 7.63333 0.52366H10.0833C10.4042 0.52366 10.6789 0.637372 10.9076 0.864795C11.1359 1.09261 11.25 1.36633 11.25 1.68596V9.82207C11.25 10.1417 11.1359 10.4154 10.9076 10.6432C10.6789 10.8707 10.4042 10.9844 10.0833 10.9844H1.91667ZM6 1.2501C6.12639 1.2501 6.231 1.20884 6.31383 1.12631C6.39628 1.04418 6.4375 0.940151 6.4375 0.814235C6.4375 0.688319 6.39628 0.5841 6.31383 0.501576C6.231 0.41944 6.12639 0.378372 6 0.378372C5.87361 0.378372 5.76919 0.41944 5.68675 0.501576C5.60392 0.5841 5.5625 0.688319 5.5625 0.814235C5.5625 0.940151 5.60392 1.04418 5.68675 1.12631C5.76919 1.20884 5.87361 1.2501 6 1.2501Z"
-                                          fill="#2EC57D"/>
-                                </svg>
+                            <div class="content-tags-wrapper">
+                                <div class="content-tags-svgBx">
+                                    <svg width="12" height="11" viewBox="0 0 12 11" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.18333 6.48045L3.92917 5.23098C3.82222 5.12444 3.68611 5.07116 3.52083 5.07116C3.35556 5.07116 3.21944 5.12444 3.1125 5.23098C3.00556 5.33753 2.95208 5.47313 2.95208 5.63779C2.95208 5.80245 3.00556 5.93805 3.1125 6.04459L4.775 7.70087C4.89167 7.8171 5.02778 7.87522 5.18333 7.87522C5.33889 7.87522 5.475 7.8171 5.59167 7.70087L8.8875 4.41737C8.99444 4.31083 9.04792 4.17522 9.04792 4.01056C9.04792 3.8459 8.99444 3.7103 8.8875 3.60376C8.78056 3.49721 8.64444 3.44394 8.47917 3.44394C8.31389 3.44394 8.17778 3.49721 8.07083 3.60376L5.18333 6.48045ZM1.91667 9.82207H10.0833V1.68596H1.91667V9.82207ZM1.91667 10.9844C1.59583 10.9844 1.32108 10.8707 1.09242 10.6432C0.864139 10.4154 0.75 10.1417 0.75 9.82207V1.68596C0.75 1.36633 0.864139 1.09261 1.09242 0.864795C1.32108 0.637372 1.59583 0.52366 1.91667 0.52366H4.36667C4.49306 0.17497 4.70461 -0.10592 5.00133 -0.319008C5.29767 -0.532097 5.63056 -0.638641 6 -0.638641C6.36944 -0.638641 6.70253 -0.532097 6.99925 -0.319008C7.29558 -0.10592 7.50694 0.17497 7.63333 0.52366H10.0833C10.4042 0.52366 10.6789 0.637372 10.9076 0.864795C11.1359 1.09261 11.25 1.36633 11.25 1.68596V9.82207C11.25 10.1417 11.1359 10.4154 10.9076 10.6432C10.6789 10.8707 10.4042 10.9844 10.0833 10.9844H1.91667ZM6 1.2501C6.12639 1.2501 6.231 1.20884 6.31383 1.12631C6.39628 1.04418 6.4375 0.940151 6.4375 0.814235C6.4375 0.688319 6.39628 0.5841 6.31383 0.501576C6.231 0.41944 6.12639 0.378372 6 0.378372C5.87361 0.378372 5.76919 0.41944 5.68675 0.501576C5.60392 0.5841 5.5625 0.688319 5.5625 0.814235C5.5625 0.940151 5.60392 1.04418 5.68675 1.12631C5.76919 1.20884 5.87361 1.2501 6 1.2501Z"
+                                              fill="#2EC57D"/>
+                                    </svg>
+                                </div>
+                                <!-- /.content-tags-svgBx -->
+                                <p class="content-tags__item-title">В НАЛИЧИИ</p>
+                                <!-- /.content-tags__item-title -->
                             </div>
-                            <!-- /.content-tags-svgBx -->
-                            <p class="content-tags__item-title">В НАЛИЧИИ</p>
-                            <!-- /.content-tags__item-title -->
+                            <div class="content-tooltipBx">
+                                <p class="content__tooltip">
+                                    Препарат в наличии на складе и его можно заказать прямо сейчас
+                                </p>
+                            </div>
+                            <!-- /.content-tooltipBx -->
                         </div>
                         <!-- /.content-tags__item -->
                         <div class="content-tags__item">
-                            <div class="content-tags-svgBx">
-                                <svg width="10" height="12" viewBox="0 0 10 12" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3.25016 5.75401C3.08488 5.75401 2.94644 5.69822 2.83483 5.58664C2.72283 5.47545 2.66683 5.33752 2.66683 5.17286C2.66683 5.0082 2.72283 4.87008 2.83483 4.7585C2.94644 4.64731 3.08488 4.59171 3.25016 4.59171H6.75016C6.91544 4.59171 7.05408 4.64731 7.16608 4.7585C7.27769 4.87008 7.3335 5.0082 7.3335 5.17286C7.3335 5.33752 7.27769 5.47545 7.16608 5.58664C7.05408 5.69822 6.91544 5.75401 6.75016 5.75401H3.25016ZM3.25016 3.42941C3.08488 3.42941 2.94644 3.37381 2.83483 3.26262C2.72283 3.15104 2.66683 3.01292 2.66683 2.84826C2.66683 2.6836 2.72283 2.54548 2.83483 2.4339C2.94644 2.3227 3.08488 2.26711 3.25016 2.26711H6.75016C6.91544 2.26711 7.05408 2.3227 7.16608 2.4339C7.27769 2.54548 7.3335 2.6836 7.3335 2.84826C7.3335 3.01292 7.27769 3.15104 7.16608 3.26262C7.05408 3.37381 6.91544 3.42941 6.75016 3.42941H3.25016ZM1.50016 6.91631H5.87516C6.15711 6.91631 6.41961 6.97675 6.66266 7.09763C6.90572 7.2189 7.10988 7.39092 7.27516 7.61369L8.50016 9.21186V1.10481H1.50016V6.91631ZM1.50016 10.4032H7.946L6.35641 8.3256C6.29808 8.24812 6.22769 8.18768 6.14525 8.14429C6.06241 8.10051 5.97238 8.07861 5.87516 8.07861H1.50016V10.4032ZM8.50016 11.5655H1.50016C1.17933 11.5655 0.904774 11.4518 0.676496 11.2244C0.447829 10.9966 0.333496 10.7229 0.333496 10.4032V1.10481C0.333496 0.785173 0.447829 0.511451 0.676496 0.28364C0.904774 0.0562166 1.17933 -0.0574951 1.50016 -0.0574951H8.50016C8.821 -0.0574951 9.09575 0.0562166 9.32441 0.28364C9.55269 0.511451 9.66683 0.785173 9.66683 1.10481V10.4032C9.66683 10.7229 9.55269 10.9966 9.32441 11.2244C9.09575 11.4518 8.821 11.5655 8.50016 11.5655Z"
-                                          fill="#467EE5"/>
-                                </svg>
+                            <div class="content-tags-wrapper">
+                                <div class="content-tags-svgBx">
+                                    <svg width="10" height="12" viewBox="0 0 10 12" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.25016 5.75401C3.08488 5.75401 2.94644 5.69822 2.83483 5.58664C2.72283 5.47545 2.66683 5.33752 2.66683 5.17286C2.66683 5.0082 2.72283 4.87008 2.83483 4.7585C2.94644 4.64731 3.08488 4.59171 3.25016 4.59171H6.75016C6.91544 4.59171 7.05408 4.64731 7.16608 4.7585C7.27769 4.87008 7.3335 5.0082 7.3335 5.17286C7.3335 5.33752 7.27769 5.47545 7.16608 5.58664C7.05408 5.69822 6.91544 5.75401 6.75016 5.75401H3.25016ZM3.25016 3.42941C3.08488 3.42941 2.94644 3.37381 2.83483 3.26262C2.72283 3.15104 2.66683 3.01292 2.66683 2.84826C2.66683 2.6836 2.72283 2.54548 2.83483 2.4339C2.94644 2.3227 3.08488 2.26711 3.25016 2.26711H6.75016C6.91544 2.26711 7.05408 2.3227 7.16608 2.4339C7.27769 2.54548 7.3335 2.6836 7.3335 2.84826C7.3335 3.01292 7.27769 3.15104 7.16608 3.26262C7.05408 3.37381 6.91544 3.42941 6.75016 3.42941H3.25016ZM1.50016 6.91631H5.87516C6.15711 6.91631 6.41961 6.97675 6.66266 7.09763C6.90572 7.2189 7.10988 7.39092 7.27516 7.61369L8.50016 9.21186V1.10481H1.50016V6.91631ZM1.50016 10.4032H7.946L6.35641 8.3256C6.29808 8.24812 6.22769 8.18768 6.14525 8.14429C6.06241 8.10051 5.97238 8.07861 5.87516 8.07861H1.50016V10.4032ZM8.50016 11.5655H1.50016C1.17933 11.5655 0.904774 11.4518 0.676496 11.2244C0.447829 10.9966 0.333496 10.7229 0.333496 10.4032V1.10481C0.333496 0.785173 0.447829 0.511451 0.676496 0.28364C0.904774 0.0562166 1.17933 -0.0574951 1.50016 -0.0574951H8.50016C8.821 -0.0574951 9.09575 0.0562166 9.32441 0.28364C9.55269 0.511451 9.66683 0.785173 9.66683 1.10481V10.4032C9.66683 10.7229 9.55269 10.9966 9.32441 11.2244C9.09575 11.4518 8.821 11.5655 8.50016 11.5655Z"
+                                              fill="#467EE5"/>
+                                    </svg>
+                                </div>
+                                <!-- /.content-tags-svgBx -->
+                                <p class="content-tags__item-title">БЕЗ РЕЦЕПТА</p>
+                                <!-- /.content-tags__item-title -->
                             </div>
-                            <!-- /.content-tags-svgBx -->
-                            <p class="content-tags__item-title">БЕЗ РЕЦЕПТА</p>
-                            <!-- /.content-tags__item-title -->
+
+                            <div class="content-tooltipBx">
+                                <p class="content__tooltip">
+                                    Это рецептурный препарат, его можно заказать по рецепту врача
+                                </p>
+                            </div>
                         </div>
                         <!-- /.content-tags__item -->
                     </div>
@@ -214,7 +279,7 @@
                     </div>
                     <div class="content-buttonBx mobile">
                         <!-- /.content__counter -->
-                        <button class="content__button call-button">Купить</button>
+                        <button class="content__button call-button main-button">Купить</button>
                         <!-- /.content__button -->
                     </div>
                     <!-- /.content-buttonBx -->
@@ -258,7 +323,7 @@
                             <div class="content-buttonBx">
                                 <p class="content__counter">В наличии <span>245</span> шт.</p>
                                 <!-- /.content__counter -->
-                                <button class="content__button call-button">Купить</button>
+                                <button class="content__button call-button main-button">Купить</button>
                                 <!-- /.content__button -->
                             </div>
                             <!-- /.content-buttonBx -->
@@ -302,7 +367,7 @@
                                 <div class="release-priceBx mobile">
                                     <p class="release-priceBx__price">2 202 ₽</p>
                                     <!-- /.release-priceBx__price -->
-                                    <button class="release-priceBx__button call-button">Купить</button>
+                                    <button class="release-priceBx__button call-button main-button">Купить</button>
                                     <!-- /.release-priceBx__button -->
                                 </div>
                                 <!-- /.release-priceBx -->
@@ -348,7 +413,7 @@
                             <div class="release-priceBx desktop">
                                 <p class="release-priceBx__price">2 202 ₽</p>
                                 <!-- /.release-priceBx__price -->
-                                <button class="release-priceBx__button call-button">Купить</button>
+                                <button class="release-priceBx__button call-button main-button">Купить</button>
                                 <!-- /.release-priceBx__button -->
                             </div>
                             <!-- /.release-priceBx -->
@@ -363,7 +428,7 @@
                                 <div class="release-priceBx mobile">
                                     <p class="release-priceBx__price">2 202 ₽</p>
                                     <!-- /.release-priceBx__price -->
-                                    <button class="release-priceBx__button call-button">Купить</button>
+                                    <button class="release-priceBx__button call-button main-button">Купить</button>
                                     <!-- /.release-priceBx__button -->
                                 </div>
                                 <!-- /.release-priceBx -->
@@ -409,7 +474,7 @@
                             <div class="release-priceBx desktop">
                                 <p class="release-priceBx__price">2 202 ₽</p>
                                 <!-- /.release-priceBx__price -->
-                                <button class="release-priceBx__button call-button">Купить</button>
+                                <button class="release-priceBx__button call-button main-button">Купить</button>
                                 <!-- /.release-priceBx__button -->
                             </div>
                             <!-- /.release-priceBx -->
@@ -424,7 +489,7 @@
                                 <div class="release-priceBx mobile">
                                     <p class="release-priceBx__price">2 202 ₽</p>
                                     <!-- /.release-priceBx__price -->
-                                    <button class="release-priceBx__button call-button">Купить</button>
+                                    <button class="release-priceBx__button call-button main-button">Купить</button>
                                     <!-- /.release-priceBx__button -->
                                 </div>
                                 <!-- /.release-priceBx -->
@@ -470,7 +535,7 @@
                             <div class="release-priceBx desktop">
                                 <p class="release-priceBx__price">2 202 ₽</p>
                                 <!-- /.release-priceBx__price -->
-                                <button class="release-priceBx__button call-button">Купить</button>
+                                <button class="release-priceBx__button call-button main-button">Купить</button>
                                 <!-- /.release-priceBx__button -->
                             </div>
                             <!-- /.release-priceBx -->
@@ -503,7 +568,7 @@
                     <div class="forms__item-priceBx">
                         <p class="forms__item-price">2 371 ₽</p>
                         <!-- /.forms__item-price -->
-                        <button class="forms__item-button call-button">Купить</button>
+                        <button class="forms__item-button call-button second-button">Купить</button>
                         <!-- /.forms__item-button -->
                     </div>
                     <!-- /.forms__item-priceBx -->
@@ -520,7 +585,7 @@
                     <div class="forms__item-priceBx">
                         <p class="forms__item-price">2 371 ₽</p>
                         <!-- /.forms__item-price -->
-                        <button class="forms__item-button call-button">Купить</button>
+                        <button class="forms__item-button call-button second-button">Купить</button>
                         <!-- /.forms__item-button -->
                     </div>
                     <!-- /.forms__item-priceBx -->
@@ -537,7 +602,7 @@
                     <div class="forms__item-priceBx">
                         <p class="forms__item-price">2 371 ₽</p>
                         <!-- /.forms__item-price -->
-                        <button class="forms__item-button call-button">Купить</button>
+                        <button class="forms__item-button call-button second-button">Купить</button>
                         <!-- /.forms__item-button -->
                     </div>
                     <!-- /.forms__item-priceBx -->
@@ -554,7 +619,7 @@
                     <div class="forms__item-priceBx">
                         <p class="forms__item-price">2 371 ₽</p>
                         <!-- /.forms__item-price -->
-                        <button class="forms__item-button call-button">Купить</button>
+                        <button class="forms__item-button call-button second-button">Купить</button>
                         <!-- /.forms__item-button -->
                     </div>
                     <!-- /.forms__item-priceBx -->
@@ -818,10 +883,13 @@
                     <!-- /.instruction__item -->
                 </div>
                 <!-- /.instruction-lists -->
-                <button class="instruction__button-mobile call-button">Купить</button>
-                <!-- /.instruction__button-mobile -->
             </div>
             <!-- /.instruction__container -->
+            <div class="instruction__button-mobileBx">
+                <button class="instruction__button-mobile call-button main-button">Купить</button>
+                <!-- /.instruction__button-mobile -->
+            </div>
+            <!-- /.instruction__button-mobileBx -->
         </div>
         <!-- /.instruction-mobile -->
         <div class="instruction-desktop">
@@ -1229,14 +1297,16 @@
                             <!-- /.instruction-nav-slider__item -->
                         </div>
                         <!-- /.instruction-nav-slider -->
-                        <button class="instruction-nav__button call-button">Купить</button>
+                        <button class="instruction-nav__button call-button main-button">Купить</button>
                         <!-- /.instruction-nav__button -->
+                        <!-- /.instruction-nav-buttonBx -->
                     </div>
                     <!-- /.instruction-nav -->
                 </div>
                 <!-- /.instruction-inner -->
             </div>
-            <!-- /.instruction__container --></div>
+            <!-- /.instruction__container -->
+        </div>
     </section>
     <!-- /.instruction -->
 
@@ -1551,7 +1621,7 @@
             </div>
             <!-- /.delivery-box -->
             <div class="delivery-buttonBx">
-                <button class="delivery__button call-button">Заказать доставку</button>
+                <button class="delivery__button call-button main-button">Заказать доставку</button>
             </div>
         </div>
         <!-- /.delivery__container -->
@@ -2045,14 +2115,14 @@
   </div>
 </footer>
 </main>
-<script defer src="static/plugins/jquery.min.js?_v=20230313113038"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js?_v=20230313113038"></script>
-<script defer src="static/plugins/jquery.maskedinput.min.js?_v=20230313113038"></script>
-<script defer src="static/plugins/jquery.spincrement.min.js?_v=20230313113038"></script>
-<script defer src="static/plugins/slick.min.js?_v=20230313113038"></script>
+<script defer src="static/plugins/jquery.min.js?_v=20230313154957"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js?_v=20230313154957"></script>
+<script defer src="static/plugins/jquery.maskedinput.min.js?_v=20230313154957"></script>
+<script defer src="static/plugins/jquery.spincrement.min.js?_v=20230313154957"></script>
+<script defer src="static/plugins/slick.min.js?_v=20230313154957"></script>
 
 
-<script defer src="js/app.js?_v=20230313113038"></script>
+<script defer src="js/app.js?_v=20230313154957"></script>
 
 </body>
 </html> 
