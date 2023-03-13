@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ========== MAIN CSS ========== -->
-  <link rel="stylesheet" href="./static/awesome/all.css?_v=20230313154957">
-  <link rel="stylesheet" href="css/style.min.css?_v=20230313154957">
+  <link rel="stylesheet" href="./static/awesome/all.css?_v=20230313161714">
+  <link rel="stylesheet" href="css/style.min.css?_v=20230313161714">
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css?_v=20230313154957" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css?_v=20230313161714" />
 
   <!-- ========== FAVICONS ========== -->
   <link rel="apple-touch-icon" sizes="76x76" href="./static/favicon/apple-touch-icon.png">
@@ -33,9 +33,9 @@
         <!-- /.modal__title -->
         <p class="modal__subtitle">Оставьте ваш номер телефона и мы свяжемся в течение ближайшего времени</p>
         <!-- /.modal__subtitle -->
-        <form class="modal-form">
-            <div class="modal-inputBx"><label for="name">Как к вам обращаться</label><input id="name" type="text" placeholder="Ваше имя"></div>
-            <div class="modal-inputBx"><label for="phone">Позвоним на этот номер</label><input class="mask-phone" id="phone" type="text" placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"></div>
+        <form class="modal-form" action="#">
+            <div class="modal-inputBx"><label for="name">Как к вам обращаться</label><input id="name" type="text" placeholder="Ваше имя" required></div>
+            <div class="modal-inputBx"><label for="phone">Позвоним на этот номер</label><input class="mask-phone" id="phone" type="text" placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _" required></div>
             <button class="modal__button" type="submit">Отправить заявку</button>
         </form>
         <svg class="modal__cross close-on-blackout" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,11 +50,11 @@
     <div class="modal-box">
         <p class="modal__title">Оставьте свой отзыв</p>
         <!-- /.modal__title -->
-        <form class="modal-form">
+        <form class="modal-form" action="#">
             <div class="modal-inputBx"><label for="name1">Как к вам обращаться</label><input id="name1" type="text" placeholder="Ваше имя"></div>
             <div class="modal-inputBx">
                 <label for="text">Оставьте отзыв</label>
-                <textarea name="text" id="text" cols="30" rows="10"></textarea>
+                <textarea placeholder="Ваш текст" class="modal-form__textarea" name="text" id="text" cols="30" rows="3" required></textarea>
             </div>
             <button class="modal__button" type="submit">Отправить заявку</button>
         </form>
@@ -2115,14 +2115,14 @@
   </div>
 </footer>
 </main>
-<script defer src="static/plugins/jquery.min.js?_v=20230313154957"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js?_v=20230313154957"></script>
-<script defer src="static/plugins/jquery.maskedinput.min.js?_v=20230313154957"></script>
-<script defer src="static/plugins/jquery.spincrement.min.js?_v=20230313154957"></script>
-<script defer src="static/plugins/slick.min.js?_v=20230313154957"></script>
+<script defer src="static/plugins/jquery.min.js?_v=20230313161714"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js?_v=20230313161714"></script>
+<script defer src="static/plugins/jquery.maskedinput.min.js?_v=20230313161714"></script>
+<script defer src="static/plugins/jquery.spincrement.min.js?_v=20230313161714"></script>
+<script defer src="static/plugins/slick.min.js?_v=20230313161714"></script>
 
 
-<script defer src="js/app.js?_v=20230313154957"></script>
+<script defer src="js/app.js?_v=20230313161714"></script>
 
 </body>
 </html> 
