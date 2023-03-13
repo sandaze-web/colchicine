@@ -307,23 +307,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if(document.querySelector('.content') !== null) {
-        if(document.querySelector('.toolbar.mobile' ) !== null && window.innerWidth <= 769) {
-            $('.toolbar.mobile .toolbar-box').slick({
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                dots: false,
-                infinite: false,
-                arrows: false,
-                swipe: true,
-                focusOnSelect: true,
-                variableWidth: true
-            });
-        }
+        $('.toolbar-mobile').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            dots: false,
+            infinite: false,
+            arrows: false,
+            swipe: true,
+            focusOnSelect: true,
+            variableWidth: true
+        });
         const sections = document.querySelectorAll('section'),
             links = document.querySelectorAll('.toolbar__item')
         let accessRatio = 0.8
 
-        if(window.innerWidth <= 768) accessRatio = 0.4
+        if(window.innerWidth <= 768) accessRatio = 0.3
         const cb = (entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting && entry.intersectionRatio >= accessRatio) {
@@ -356,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             line.style.width = activeLink[0].offsetWidth + 'px'
                         }else{
                             const index = $(activeLink[1]).attr("data-slick-index");
-                            $(".toolbar.mobile .toolbar-box").slick("slickGoTo", index);
+                            $(".toolbar-mobile").slick("slickGoTo", index);
                         }
                     }
 
@@ -367,9 +365,13 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         }
 
-        let rootMargin = -80
-        if(window.innerWidth <= 768) rootMargin = -40
-        const sectionObserver = new IntersectionObserver(cb, { threshold: [ 0.1, 0.5, 0.8], rootMargin: `${rootMargin}px 0px ${rootMargin}px 0px` })
+        let rootMargin = -80,
+            threshold = [ 0.1, 0.5, 0.8]
+        if(window.innerWidth <= 768) {
+            rootMargin = 0
+            threshold = [ 0.1, 1]
+        }
+        const sectionObserver = new IntersectionObserver(cb, { threshold: threshold, rootMargin: `${rootMargin}px 0px ${rootMargin}px 0px` })
 
         sections.forEach(section => {sectionObserver.observe(section)})
     }
