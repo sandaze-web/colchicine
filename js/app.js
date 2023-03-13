@@ -167,7 +167,7 @@ headerFixed();
 $('a[href^="#"]').on("click", function (e) {
     let anchor = $(this);
     let offsetAnchor = 220
-    if(window.innerWidth <= 768) offsetAnchor = 10
+    if(window.innerWidth <= 768) offsetAnchor = 100
     let offset = document.documentElement.clientHeight * offsetAnchor / 929
     $('html, body').stop().animate({
         scrollTop: $(anchor.attr("href")).offset().top - offset
